@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>BRIES FOOTWEAR HUB | Own Every Step</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #ffffff; color: #111111; overflow-x: hidden; }
+        .top-banner { background-color: #00aa4b; color: #ffffff; font-size: 0.75rem; text-align: center; padding: 0.6rem 0; font-weight: 600; text-transform: uppercase; }
+        header { background-color: rgba(255, 255, 255, 0.95); border-bottom: 1px solid #eeeeee; position: sticky; top: 0; z-index: 1000; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; }
+        .logo-wrapper { display: flex; align-items: center; gap: 0.8rem; }
+        .business-logo-img { width: 45px; height: 45px; object-fit: cover; border-radius: 4px; }
+        .logo { font-size: 1.5rem; color: #111111; text-transform: uppercase; font-weight: 900; }
+        .logo span { color: #00aa4b; }
+        .nav-links { list-style: none; display: flex; gap: 2rem; }
+        .nav-links a { color: #444444; text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+        .nav-icons { font-size: 1.2rem; cursor: pointer; }
+        .search-bar-container { max-width: 500px; margin: 2rem auto 0 auto; padding: 0 1rem; }
+        .search-input { width: 100%; padding: 0.8rem 1.2rem; border: 2px solid #eeeeee; border-radius: 30px; font-size: 0.95rem; outline: none; }
+        .search-input:focus { border-color: #00aa4b; }
+        .cart-icon-wrapper { position: relative; }
+        .cart-badge { position: absolute; top: -6px; right: -10px; background-color: #00aa4b; color: #ffffff; font-size: 0.7rem; font-weight: bold; border-radius: 50%; padding: 1px 5px; }
+        .hero { position: relative; height: 60vh; width: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; background-color: #0b0b0b; }
+        .animated-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; background: linear-gradient(180deg, rgba(11,11,11,0.85) 0%, rgba(11,11,11,0.95) 100__); }
+        .shoe-animation-layer { position: absolute; width: 140%; height: 140%; top: -20%; left: -20%; background-image: url('airforce 1.jpg'); background-repeat: repeat; background-size: 320px auto; opacity: 0.08; z-index: -1; animation: moveBackground 35s linear infinite; }
+        @keyframes moveBackground { 0% { transform: translate(0, 0) rotate(0deg); } 100% { transform: translate(80px, 80px) rotate(1deg); } }
+        .hero-content { position: relative; z-index: 10; text-align: center; max-width: 800px; padding: 0 2rem; color: white; }
+        .hero-content h1 { font-size: 3.5rem; text-transform: uppercase; margin-bottom: 1rem; }
+        .hero-content h1 span { color: #00aa4b; }
+        .cta-btn { background-color: #00aa4b; color: #ffffff; padding: 0.8rem 2rem; border: none; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; cursor: pointer; }
+        .cart-sidebar { position: fixed; top: 0; right: -400px; width: 100%; max-width: 400px; height: 100%; background-color: #ffffff; border-left: 1px solid #eeeeee; box-shadow: -10px 0 30px rgba(0,0,0,0.1); z-index: 2000; transition: right 0.4s ease; display: flex; flex-direction: column; padding: 2rem; }
+        .cart-sidebar.open { right: 0; }
+        .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 1rem; }
+        .close-cart { background: none; border: none; font-size: 1.3rem; cursor: pointer; }
+        .cart-items-container { flex-grow: 1; overflow-y: auto; margin-top: 1rem; }
+        .order-form-box { border-top: 1px solid #eeeeee; padding-top: 1.5rem; }
+        .cart-total-row { display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem; font-weight: bold; margin-bottom: 1rem; }
+        .delivery-banner { background-color: #fafafa; border: 1px dashed #00aa4b; color: #00aa4b; padding: 0.8rem; text-align: center; font-size: 0.85rem; font-weight: bold; margin-bottom: 0.8rem; }
+        .delivery-textarea { width: 100%; height: 70px; background-color: #fafafa; border: 1px solid #ddd; padding: 0.6rem; resize: none; margin-bottom: 1.5rem; }
+        .checkout-btn { width: 100%; background-color: #00aa4b; color: #fff; padding: 0.9rem; border: none; font-weight: bold; text-transform: uppercase; cursor: pointer; }
+        .brands-row { max-width: 1400px; margin: 2rem auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .brand-name { font-size: 1.2rem; font-weight: bold; color: #cccccc; }
+        .section-container { max-width: 1400px; margin: 3rem auto; padding: 0 2rem; }
+        .section-header { margin-bottom: 1.5rem; border-left: 4px solid #00aa4b; padding-left: 0.8rem; }
+        .section-title { font-size: 1.4rem; text-transform: uppercase; font-weight: 800; }
+        .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; }
+        .category-card { text-align: center; cursor: pointer; text-decoration: none; color: #111; }
+        .category-img-circle { width: 100%; aspect-ratio: 1; border-radius: 50%; background-color: #f6f6f6; overflow: hidden; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; }
+        .category-img-circle img { width: 70%; height: 70%; object-fit: contain; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+        .product-card { background-color: #ffffff; display: flex; flex-direction: column; border: 1px solid #f0f0f0; padding: 1rem; border-radius: 8px; }
+        .product-img-wrapper { width: 100%; height: 200px; background-color: #f6f6f6; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .product-img-wrapper img { width: 85%; height: 85%; object-fit: contain; }
+        .product-details { padding-top: 0.8rem; }
+        .product-name { font-size: 0.95rem; font-weight: 700; }
+        .product-subtext { font-size: 0.8rem; color: #777; margin-bottom: 0.5rem; }
+        .product-bottom { display: flex; justify-content: space-between; align-items: center; }
+        .price { font-size: 1rem; font-weight: 800; }
+        .add-btn { background-color: #111111; color: #ffffff; border: none; padding: 0.4rem 0.8rem; font-size: 0.8rem; font-weight: 600; cursor: pointer; border-radius: 4px; }
+        .add-btn:hover { background-color: #00aa4b; }
+        .shipping-grid-matrix { max-width: 1400px; margin: 3rem auto; padding: 0 2rem; }
+        .shipping-matrix-card { background-color: #fafafa; border: 1px solid #eeeeee; padding: 1.5rem; border-radius: 8px; }
+        .shipping-matrix-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem; color: #00aa4b; text-transform: uppercase; }
+        .matrix-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        .matrix-table th { text-align: left; padding: 0.5rem; background-color: #f0f0f0; }
+        .matrix-table td { padding: 0.5rem; border-bottom: 1px solid #eeeeee; }
+        .contact-widget { background-color: #fbfdfc; border: 1px solid #e0f2e8; padding: 2rem; max-width: 700px; margin: 4rem auto; text-align: center; border-radius: 12px; }
+        .phone-link { display: inline-block; color: #111111; font-size: 2rem; font-weight: 900; text-decoration: none; border-bottom: 3px solid #00aa4b; margin: 0.5rem 0; }
+        footer { background-color: #111111; color: #ffffff; padding: 3rem 2rem 1.5rem 2rem; margin-top: 4rem; }
+        .footer-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; }
+        .footer-col h4 { text-transform: uppercase; font-size: 0.9rem; margin-bottom: 1rem; color: #00aa4b; }
+        .footer-col p { font-size: 0.8rem; color: #999; line-height: 1.5; }
+        .footer-bottom { max-width: 1400px; margin: 0 auto; border-top: 1px solid #222222; padding-top: 1.5rem; margin-top: 2rem; display: flex; justify-content: space-between; color: #666; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <div class="top-banner">⚡️ EXCLUSIVE DROPS STORE | ON-DEMAND COURIER SHIPPING ACROSS KENYA ⚡️</div>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo-wrapper">
+                <img src="logo.jpg" alt="Logo" class="business-logo-img" onerror="this.style.display='none';">
+                <div class="logo">BRIE'S <span>SHOE PALACE</span></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#airforce">ADIDAS</a></li>
+                <li><a href="#airforce">BALENCIAGA</a></li>
+                <li><a href="#airforce">JORDANS</a></li>
+                <li><a href="#nike">CLOGS</a></li>
+                <li><a href="#clogs">CLARKS</a></li>
+                <li><a href="#clarks">CLEATS</a></li>
+                <li><a href="#sports">NIKE</a></li>
+                <li><a href="#cleats">SPOTWEAR</a></li>
+                <li><a href="#airforce">CLEATS</a></li>
+            </ul>
+            <div class="nav-icons" onclick="toggleCart()">
+                <div class="cart-icon-wrapper">🛒 <span class="cart-badge" id="cart-counter-badge">0</span></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="animated-bg"><div class="shoe-animation-layer"></div></div>
+        <div class="hero-content">
+            <h1><span>BRIE'S SHOE PALACE</span> OWN EVERY STEP.</h1>
+            <p>Explore the best collection of branded footwear. Built different for everyday comfort.</p>
+            <button class="cta-btn" onclick="document.getElementById('airforce').scrollIntoView({behavior: 'smooth'});">Shop Now &rarr;</button>
+        </div>
+    </section>
+
+    <div class="search-bar-container">
+
+<div class="product-card"> <div class="product-img-wrapper"><img src="nike 1.jpg" alt="${NIKE KICKS}" onerror="this.src='https://placehold.co{namePrefix.replace(/ /g, '+')}+${i}'"></div> <div class="product-details"> <h3 class="product-name"> {nike} KSh{3500-4500}</h3> <p class="prouct-subtext">${PRICE BASED ON THE SHOE SIZE}</p> <div class="product-bottom"><span class="price">KSh (3500-4500)</span><button class="add-btn" onclick="addItemToCart('${namePrefix} ${i}', KSh.{3500})">Add</button></div> </div> </div>;
+
+<li style="display:flex; justify-content:space-between; padding:0.5rem 0; border-bottom:1px solid #eee; font-size:0.9rem;"><div><span>👟 ${item.name}</span><br><span style="color:#666; font-size:0.8rem;">KSh ${item.price.toLocaleString()}</span></div><button onclick="removeItemFromCart(${index})" style="background:none; border:none; color:#e50914; cursor:pointer; font-weight:bold;">Remove</button></li>;
+});
+</html>
